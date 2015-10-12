@@ -2,7 +2,6 @@
 source /vagrant/bin/provision_helper.sh
 
 # provision_riak -- Installs and configures Riak as a cluster of 1
-rpm_source_path="http://s3.amazonaws.com/private.downloads.basho.com/riak_ee/31f566/2.1.1/rhel/6/riak-ee-2.1.1-1.el6.x86_64.rpm"
 rpm_dest_path="/vagrant/data/rpmcache/riak-ee-2.1.1-1.el6.x86_64.rpm"
 
 echo "Installing Riak..."
@@ -10,9 +9,8 @@ echo "Installing Riak..."
 echo "* Checking for cached components"
 if [ ! -f "${rpm_dest_path}" ] 
   then
-    echo "   - Downloading Riak 2.1.1 EE Package into cache"
-    wget -q --output-document=${rpm_dest_path} ${rpm_source_path}
-
+    echo "ERROR: Please download riak-ee-2.1.1-1.el6.x86_64 and place into data/rpmcache"
+    exit 1
 fi
 
 echo "* Installing Riak Package"
