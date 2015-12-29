@@ -7,9 +7,54 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.forward_x11 = true
 
-  config.vm.box = "chef/centos-6.5"
-  config.vm.provision "riak", type: "shell", path: "bin/provision_riak.sh"
+  config.vm.box = "bento/centos-6.7"
   config.vm.network "private_network", type: "dhcp"
+
+## Riak OSS
+
+  config.vm.define "riak_1.4.12" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.12.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak_2.0.5" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.0.5.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak_2.1.1" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.1.1.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak_2.1.3" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.1.3.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+## Riak EE -- Requires that the rpms be pre-downloaded.
+
+  config.vm.define "riak-ee_2.0.5" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.5.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak-ee_2.0.6" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.6.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak-ee_2.1.1" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.1.1.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak-ee_2.1.3" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.1.3.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
+## Riak CS
 
   config.vm.define "riak-cs_1.4.5" do |riakcs|
     riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.8.sh"
@@ -41,31 +86,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     riakcs.vm.provision "riak-cs", type: "shell", path: "bin/provision_riak-cs_2.0.1.sh"
     riakcs.vm.provision "s3_clients", type: "shell", path: "bin/provision_s3_clients.sh"
     riakcs.vm.hostname = "node1.riak.local"
-  end
-
-  config.vm.define "riak_1.4.12" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.12.sh"
-    riak.vm.hostname = "node1.riak.local"
-  end
-
-  config.vm.define "riak_2.0.5" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.0.5.sh"
-    riak.vm.hostname = "node1.riak.local"
-  end
-
-  config.vm.define "riak-ee_2.0.5" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.5.sh"
-    riak.vm.hostname = "node1.riak.local"
-  end
-
-  config.vm.define "riak-ee_2.0.6" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.6.sh"
-    riak.vm.hostname = "node1.riak.local"
-  end
-
-  config.vm.define "riak-ee_2.1.1" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.1.1.sh"
-    riak.vm.hostname = "node1.riak.local"
   end
 
 end
