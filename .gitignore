@@ -4,6 +4,7 @@ data/work
 .vagrant
 *.rpm
 clusters/*
+!clusters/.empty
 # OSX Items to ignore
 .DS_Store
 .AppleDouble
