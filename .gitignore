@@ -1,5 +1,5 @@
 # Project Specific Ignores
-.cluster
+.cluster/*.json
 data/work
 .vagrant
 *.rpm
