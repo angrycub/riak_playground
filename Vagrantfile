@@ -54,6 +54,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     riak.vm.hostname = "node1.riak.local"
   end
 
+## Riak TS -- Requires packages in data/rpmcache
+
+  config.vm.define "riak-ts_1.1.0" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ts_1.1.0.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
 ## Riak CS
 
   config.vm.define "riak-cs_1.4.5" do |riakcs|
@@ -84,6 +91,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.0.5.sh"
     riakcs.vm.provision "stanchion", type: "shell", path: "bin/provision_stanchion_2.0.0.sh"
     riakcs.vm.provision "riak-cs", type: "shell", path: "bin/provision_riak-cs_2.0.1.sh"
+    riakcs.vm.provision "s3_clients", type: "shell", path: "bin/provision_s3_clients.sh"
+    riakcs.vm.hostname = "node1.riak.local"
+  end
+
+  config.vm.define "riak-cs_2.1.0" do |riakcs|
+    riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.1.3.sh"
+    riakcs.vm.provision "stanchion", type: "shell", path: "bin/provision_stanchion_2.1.0.sh"
+    riakcs.vm.provision "riak-cs", type: "shell", path: "bin/provision_riak-cs_2.1.0.sh"
     riakcs.vm.provision "s3_clients", type: "shell", path: "bin/provision_s3_clients.sh"
     riakcs.vm.hostname = "node1.riak.local"
   end
