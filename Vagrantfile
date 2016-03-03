@@ -12,6 +12,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ## Riak OSS
 
+  config.vm.define "riak_1.4.10" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.10.sh"
+    riak.vm.hostname = "node1.riak.local"
+  end
+
   config.vm.define "riak_1.4.12" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.12.sh"
     riak.vm.hostname = "node1.riak.local"
