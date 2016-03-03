@@ -11,8 +11,10 @@ The current environments that this project can create are:
 
 #### Riak ####
 
+ * riak_1.4.10
  * riak_1.4.12
- * riak_2.0.5
+ * riak_2.1.1
+ * riak_2.1.3
 
 #### Riak CS ####
 
@@ -20,12 +22,19 @@ The current environments that this project can create are:
  * riak-cs_1.5.2
  * riak-cs_1.5.4
  * riak-cs_2.0.1
+ * riak-cs_2.1.0
 
 #### Riak EE (if you bring your own EE RPMs) ####
 
  * riak-ee_2.0.5
  * riak-ee_2.0.6
  * riak-ee_2.1.1
+ * riak-ee_2.1.3
+
+#### Riak TS (if you bring your own TS RPMs) ####
+
+ * riak-ts_1.1.0
+
 
 ### Use ###
 ```
