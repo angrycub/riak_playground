@@ -3,18 +3,24 @@ source /vagrant/bin/provision_helper.sh
 
 # provision_riak -- Installs and configures Riak as a cluster of 1
 
-echo "Installing Riak..."
+RIAK_VERSION="2.1.2"
+RIAK_VERSION_MAJOR_MINOR=`echo ${RIAK_VERSION} | awk -F'.' '{print $1"."$2}'`
+RIAK_EE_HASH=""
+
+RPM_PATH="/vagrant/data/rpmcache/riak-${RIAK_VERSION}-1.el6.x86_64.rpm"
+PACKAGE_URL="http://s3.amazonaws.com/downloads.basho.com/riak/${RIAK_VERSION_MAJOR_MINOR}/${RIAK_VERSION}/rhel/6/riak-${RIAK_VERSION}-1.el6.x86_64.rpm"
+
+echo "Installing Riak $RIAK_VERSION..."
 
 echo "* Checking for cached components"
-if [ ! -f "/vagrant/data/rpmcache/riak-2.1.4-1.el6.x86_64.rpm" ] 
+if [ ! -f ${RPM_PATH} ] 
   then
-    echo "   - Downloading Riak 2.1.4 Package into cache"
-    wget -q --output-document=/vagrant/data/rpmcache/riak-2.1.4-1.el6.x86_64.rpm http://s3.amazonaws.com/downloads.basho.com/riak/2.1/2.1.4/rhel/6/riak-2.1.4-1.el6.x86_64.rpm 
+    echo "   - Downloading Riak $RIAK_VERSION Package into cache"
+    wget -q --output-document=${RPM_PATH} ${PACKAGE_URL}
 fi
 
 echo "* Installing Riak Package"
-yum -y --nogpgcheck --noplugins localinstall \
-  /vagrant/data/rpmcache/riak-2.1.4-1.el6.x86_64.rpm
+yum -y --nogpgcheck --noplugins localinstall ${RPM_PATH}
 
 if [ ! -d "/etc/riak" ] 
   then
