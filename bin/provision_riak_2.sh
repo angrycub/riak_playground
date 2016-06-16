@@ -3,7 +3,6 @@ source /vagrant/bin/provision_helper.sh
 
 # provision_riak -- Installs and configures Riak as a cluster of 1
 
-RIAK_VERSION="2.1.2"
 RIAK_VERSION_MAJOR_MINOR=`echo ${RIAK_VERSION} | awk -F'.' '{print $1"."$2}'`
 RIAK_EE_HASH=""
 

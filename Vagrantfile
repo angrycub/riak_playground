@@ -49,10 +49,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ## Riak EE -- Requires that the rpms be pre-downloaded.
 
-  config.vm.define "riak-ee_2.0.5" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.5.sh"
-    riak.vm.hostname = "node1.riak.local"
-  end
+  # config.vm.define "riak-ee_2.0.5" do |riak|
+  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.5.sh"
+  #   riak.vm.hostname = "node1.riak.local"
+  # end
 
   config.vm.define "riak-ee_2.0.6" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.6.sh"
