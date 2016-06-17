@@ -5,6 +5,8 @@ data/work
 *.rpm
 clusters/*
 !clusters/.empty
+tmp/*
+!tmp/README.md
 # OSX Items to ignore
 .DS_Store
 .AppleDouble
