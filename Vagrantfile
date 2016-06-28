@@ -101,14 +101,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "riak-cs_2.0.1" do |riakcs|
-    riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.0.5.sh"
+    riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.5" }
     riakcs.vm.provision "stanchion", type: "shell", path: "bin/provision_stanchion_2.0.0.sh"
     riakcs.vm.provision "riak-cs", type: "shell", path: "bin/provision_riak-cs_2.0.1.sh"
     riakcs.vm.provision "s3_clients", type: "shell", path: "bin/provision_s3_clients.sh"
   end
 
   config.vm.define "riak-cs_2.1.0" do |riakcs|
-    riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.1.3.sh"
+    riakcs.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.1.3" }
     riakcs.vm.provision "stanchion", type: "shell", path: "bin/provision_stanchion_2.1.0.sh"
     riakcs.vm.provision "riak-cs", type: "shell", path: "bin/provision_riak-cs_2.1.0.sh"
     riakcs.vm.provision "s3_clients", type: "shell", path: "bin/provision_s3_clients.sh"
