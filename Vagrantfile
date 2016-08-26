@@ -6,6 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.forward_x11 = true
+  config.ssh.insert_key = false
 
   config.vm.box = "bento/centos-6.7"
   config.vm.network "private_network", type: "dhcp"
@@ -22,25 +23,55 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.12.sh"
   end
 
+  config.vm.define "riak_2.0.0" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.0" }
+  end
+
+  config.vm.define "riak_2.0.1" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.1" }
+  end
+
+  config.vm.define "riak_2.0.2" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.2" }
+  end
+
+  config.vm.define "riak_2.0.3" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.3" }
+  end
+
+  config.vm.define "riak_2.0.4" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.4" }
+  end
+
   config.vm.define "riak_2.0.5" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
       env: { :RIAK_VERSION => "2.0.5" }
   end
 
-  # config.vm.define "riak_2.1.1" do |riak|
-  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
-  #     env: { :RIAK_VERSION => "2.1.1" }
-  # end
-
-  config.vm.define "riak_2.1.2" do |riak|
+  config.vm.define "riak_2.0.6" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
-      env: { :RIAK_VERSION => "2.1.2" }
+      env: { :RIAK_VERSION => "2.0.6" }
   end
 
-   config.vm.define "riak_2.1.3" do |riak|
-     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+  config.vm.define "riak_2.0.7" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.0.7" }
+  end
+
+  config.vm.define "riak_2.1.1" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.1.1" }
+  end
+
+  config.vm.define "riak_2.1.3" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
       env: { :RIAK_VERSION => "2.1.3" }
-   end
+  end
 
   config.vm.define "riak_2.1.4" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
