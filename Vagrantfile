@@ -85,8 +85,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   riak.vm.hostname = "node1.riak.local"
   # end
 
-  config.vm.define "riak-ee_2.0.6" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.6.sh"
+  # config.vm.define "riak-ee_2.0.6" do |riak|
+  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.6.sh"
+  #   riak.vm.hostname = "node1.riak.local"
+  # end
+
+  config.vm.define "riak-ee_2.0.7" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.0.7.sh"
     riak.vm.hostname = "node1.riak.local"
   end
 
@@ -104,8 +109,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ## Riak TS
 
-  config.vm.define "riak-ts_1.3.0" do |riak|
-    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ts_1.3.0.sh"
+  # config.vm.define "riak-ts_1.3.0" do |riak|
+  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ts_1.3.0.sh"
+  # end
+
+  config.vm.define "riak-ts_1.4.0" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ts_1.4.0.sh"
   end
 
 ## Riak CS

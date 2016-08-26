@@ -9,31 +9,36 @@ It uses very simple shell scripting for provisioning which should be easily conv
 
 The current environments that this project can create are:
 
-#### Riak ####
 
- * riak_1.4.10
+#### Riak TS ####
+
+ * riak-ts_1.4.0
+
+#### Riak KV ####
+
  * riak_1.4.12
+ * riak_2.0.0
+ * riak_2.0.1
+ * riak_2.0.2
+ * riak_2.0.3
+ * riak_2.0.4
+ * riak_2.0.5
+ * riak_2.0.6
+ * riak_2.0.7
  * riak_2.1.1
  * riak_2.1.3
+ * riak_2.1.4
 
 #### Riak CS ####
 
- * riak-cs_1.4.5
- * riak-cs_1.5.2
  * riak-cs_1.5.4
  * riak-cs_2.0.1
  * riak-cs_2.1.0
 
 #### Riak EE (if you bring your own EE RPMs) ####
 
- * riak-ee_2.0.5
- * riak-ee_2.0.6
- * riak-ee_2.1.1
- * riak-ee_2.1.3
-
-#### Riak TS (if you bring your own TS RPMs) ####
-
- * riak-ts_1.1.0
+ * riak-ee_2.0.7
+ * riak-ee_2.1.4
 
 
 ### Use ###
@@ -41,4 +46,5 @@ The current environments that this project can create are:
 vagrant up «environment name»
 ```
 Will provision an environment.  RPMs will be downloaded once and cached in the **data/rpmcache** folder for reuse.
+
 
