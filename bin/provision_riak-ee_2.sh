@@ -47,6 +47,9 @@ riak hard nofile 65536
 
 '  >> /etc/security/limits.conf
 
+REX_VERSION="1.2.3"
+/vagrant/bin/provision_rex_patch.sh
+
 echo ""
 echo "* Configuring node as riak@$IP_ADDRESS "
 echo '

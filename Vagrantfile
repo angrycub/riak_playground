@@ -15,9 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 ## Riak OSS
 
-  # config.vm.define "riak_1.4.10" do |riak|
-  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.10.sh"
-  # end
+  config.vm.define "riak_1.4.10" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.10.sh"
+  end
 
   # config.vm.define "riak_1.4.12" do |riak|
   #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_1.4.12.sh"
@@ -115,9 +115,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     env: { :RIAK_VERSION => "2.1.4" }
   end
 
-  config.vm.define "riak-ee_2.2.0rc12" do |riak|
+  config.vm.define "riak-ee_2.2.0rc15" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.sh", 
-      env: { :RIAK_VERSION => "2.2.0rc12" }
+      env: { :RIAK_VERSION => "2.2.0rc15" }
   end
 
 ## Riak TS
