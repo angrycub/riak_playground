@@ -12,7 +12,7 @@ PACKAGE_URL="http://s3.amazonaws.com/downloads.basho.com/riak/${RIAK_VERSION_MAJ
 echo "Installing Riak $RIAK_VERSION..."
 
 echo "* Checking for cached components"
-if [ ! -f ${RPM_PATH} ] 
+if [ ! -f "${RPM_PATH}" ] 
   then
     echo "   - Downloading Riak $RIAK_VERSION Package into cache"
     wget -q --output-document=${RPM_PATH} ${PACKAGE_URL}
@@ -37,6 +37,9 @@ riak soft nofile 65536
 riak hard nofile 65536
 
 '  >> /etc/security/limits.conf
+
+REX_VERSION="1.2.3"
+/vagrant/bin/provision_rex_patch.sh
 
 echo ""
 echo "* Configuring node as riak@$IP_ADDRESS "
