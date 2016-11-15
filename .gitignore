@@ -1,6 +1,7 @@
 # Project Specific Ignores
 .cluster/*.json
 data/work
+data/rpmcache
 .vagrant
 *.rpm
 clusters/*
