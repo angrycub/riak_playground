@@ -78,10 +78,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       env: { :RIAK_VERSION => "2.1.4" }
   end
 
-  # config.vm.define "riak_2.2.0rc11" do |riak|
-  #   riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
-  #     env: { :RIAK_VERSION => "2.2.0rc11" }
-  # end
+  config.vm.define "riak_2.2.0" do |riak|
+    riak.vm.provision "riak", type: "shell", path: "bin/provision_riak_2.sh", 
+      env: { :RIAK_VERSION => "2.2.0" }
+  end
 
 ## Riak EE -- Requires that the rpms be pre-downloaded.
 
@@ -115,9 +115,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     env: { :RIAK_VERSION => "2.1.4" }
   end
 
-  config.vm.define "riak-ee_2.2.0rc15" do |riak|
+  config.vm.define "riak-ee_2.2.0" do |riak|
     riak.vm.provision "riak", type: "shell", path: "bin/provision_riak-ee_2.sh", 
-      env: { :RIAK_VERSION => "2.2.0rc15" }
+      env: { :RIAK_VERSION => "2.2.0" }
   end
 
 ## Riak TS

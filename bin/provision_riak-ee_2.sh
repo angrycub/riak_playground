@@ -38,14 +38,15 @@ riak hard nofile 65536
 
 '  >> /etc/security/limits.conf
 
-REX_VERSION="1.2.3"
+export REX_VERSION="1.2.3" 
 /vagrant/bin/provision_rex_patch.sh
 
 echo ""
 echo "* Configuring node as riak@$IP_ADDRESS "
 echo '
 # Added by Vagrant Provisioning Script'  >> /etc/riak/riak.conf
-echo "nodename = riak@$IP_ADDRESS" >> /etc/riak/riak.conf
+echo "nodename = riak@${IP_ADDRESS}" >> /etc/riak/riak.conf
+echo "listener.http.provisioned = ${IP_ADDRESS}:8098" >> /etc/riak/riak.conf
 
 insert_attribute riak riak@$IP_ADDRESS
 insert_service riak riak@$IP_ADDRESS
