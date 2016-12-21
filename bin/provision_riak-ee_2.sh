@@ -27,6 +27,15 @@ if [ ! -d "/etc/riak" ]
     exit 1
 fi
 
+echo "* Installing JRE for Riak (if available)"
+JAVA_RPM_PATH="/vagrant/data/rpmcache/jre-7u25-linux-x64.rpm" 
+if [ -f "${JAVA_RPM_PATH}" ] 
+  then
+    yum -y --nogpgcheck --noplugins localinstall ${JAVA_RPM_PATH}
+  else
+  	echo "  ** JRE RPM (jre-7u25-linux-x64.rpm) not found in rpmcache file; skipping."
+fi
+
 echo "* Increasing File Limits"
 echo '
 # Added by Vagrant Provisioning Script

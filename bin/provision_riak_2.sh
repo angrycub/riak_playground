@@ -6,25 +6,34 @@ source /vagrant/bin/provision_helper.sh
 RIAK_VERSION_MAJOR_MINOR=`echo ${RIAK_VERSION} | awk -F'.' '{print $1"."$2}'`
 RIAK_EE_HASH=""
 
-RPM_PATH="/vagrant/data/rpmcache/riak-${RIAK_VERSION}-1.el6.x86_64.rpm"
+RIAK_RPM_PATH="/vagrant/data/rpmcache/riak-${RIAK_VERSION}-1.el6.x86_64.rpm"
 PACKAGE_URL="http://s3.amazonaws.com/downloads.basho.com/riak/${RIAK_VERSION_MAJOR_MINOR}/${RIAK_VERSION}/rhel/6/riak-${RIAK_VERSION}-1.el6.x86_64.rpm"
 
 echo "Installing Riak $RIAK_VERSION..."
 
 echo "* Checking for cached components"
-if [ ! -f "${RPM_PATH}" ] 
+if [ ! -f "${RIAK_RPM_PATH}" ] 
   then
     echo "   - Downloading Riak $RIAK_VERSION Package into cache"
-    wget -q --output-document=${RPM_PATH} ${PACKAGE_URL}
+    wget -q --output-document=${RIAK_RPM_PATH} ${PACKAGE_URL}
 fi
 
 echo "* Installing Riak Package"
-yum -y --nogpgcheck --noplugins localinstall ${RPM_PATH}
+yum -y --nogpgcheck --noplugins localinstall ${RIAK_RPM_PATH}
 
 if [ ! -d "/etc/riak" ] 
   then
     echo "No Riak directory found after installation.  Aborting..."
     exit 1
+fi
+
+echo "* Installing JRE for Riak (if available)"
+JAVA_RPM_PATH="/vagrant/data/rpmcache/jre-7u25-linux-x64.rpm" 
+if [ -f "${JAVA_RPM_PATH}" ] 
+  then
+    yum -y --nogpgcheck --noplugins localinstall ${JAVA_RPM_PATH}
+  else
+  	echo "  ** JRE RPM (jre-7u25-linux-x64.rpm) not found in rpmcache file; skipping."
 fi
 
 echo "* Increasing File Limits"
