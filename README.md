@@ -4,7 +4,7 @@ Sometimes you just need to test a specific version of Riak or Riak CS.  This pro
 
 This project was created as a toy to use while learining Vagrant and has hown itself to be handy for me in general.
 
-It uses very simple shell scripting for provisioning which should be easily converted to something else, should you not enjoy my choice of CentOS 6.5 as your base box.  It's a free country, fork and go wild.
+It uses very simple shell scripting for provisioning which should be easily converted to something else, should you not enjoy my choice of CentOS 6.7 as your base box.  It's a free country, fork and go wild.
 
 
 The current environments that this project can create are:
