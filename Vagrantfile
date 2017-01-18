@@ -142,14 +142,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       env: { :RIAK_TS_VERSION => "1.5.0" }
   end
 
-
-## Riak Explorer
-
-  config.vm.define "riak-explorer" do |rex|
-    rex.vm.provision "rex", type: "shell", path: "bin/provision_riak-explorer.sh", 
-      env: { :RIAK_EXPLORER_VERSION => "git,master" }
-  end
-
 ## Riak CS
 
   # config.vm.define "riak-cs_1.4.5" do |riakcs|
